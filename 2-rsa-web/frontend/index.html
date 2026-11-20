@@ -1,0 +1,1111 @@
+<!doctype html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Criptografia RSA</title>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+
+<body>
+
+<div class="glow g1"></div>
+
+<div class="glow g2"></div>
+
+
+
+<!-- Fundo tecnológico decorativo -->
+
+<svg class="tech-background" viewBox="0 0 1728 900"
+
+     preserveAspectRatio="none" aria-hidden="true">
+
+  <defs>
+
+  <pattern id="mapDots" width="5" height="5" patternUnits="userSpaceOnUse">
+
+  <circle cx="1.5" cy="1.5" r="1.15" fill="#777dff"/>
+
+</pattern>
+
+    <linearGradient id="circuitLine" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#7545ff"/>
+
+      <stop offset=".5" stop-color="#555fff"/>
+
+      <stop offset="1" stop-color="#d65aff"/>
+
+    </linearGradient>
+
+    <clipPath id="worldMap">
+
+      <path d="M1120 72 L1140 53 1170 49 1190 60 1215 54 1238 70 1260 68 1278 83 1264 101 1244 107 1232 128 1210 136 1198 158 1178 162 1160 146 1140 141 1128 121 1110 110Z"/>
+
+      <path d="M1195 158 L1215 162 1228 178 1245 188 1234 198 1218 190 1205 177Z"/>
+
+      <path d="M1232 198 L1260 194 1280 208 1288 232 1275 260 1265 286 1248 310 1238 290 1228 264 1218 235 1215 214Z"/>
+
+      <path d="M1320 87 L1340 72 1360 76 1375 65 1395 75 1412 70 1425 88 1410 105 1390 108 1378 124 1358 119 1340 130 1325 114Z"/>
+
+      <path d="M1340 135 L1370 124 1400 133 1418 158 1410 185 1398 212 1380 238 1365 221 1350 195 1338 168 1328 148Z"/>
+
+      <path d="M1410 72 L1440 58 1475 62 1500 54 1530 65 1560 62 1585 78 1615 76 1640 94 1630 116 1608 123 1590 143 1560 135 1538 151 1510 137 1488 145 1465 126 1440 130 1420 112Z"/>
+
+      <path d="M1480 145 L1505 150 1525 168 1510 182 1490 173 1475 160Z"/>
+
+      <path d="M1590 150 L1602 145 1610 157 1600 171Z"/>
+
+      <path d="M1530 215 L1555 203 1585 210 1605 230 1590 250 1560 253 1538 238Z"/>
+
+    </clipPath>
+
+  </defs>
+
+  <!-- Mapa-múndi pontilhado -->
+
+  <g opacity=".52">
+
+    <rect x="1090" y="40" width="570" height="280"
+
+          fill="url(#mapDots)" clip-path="url(#worldMap)"/>
+
+  </g>
+
+  <ellipse cx="1380" cy="165" rx="290" ry="150"
+
+           fill="#6942ff" opacity=".045"/>
+
+  <!-- Circuitos da esquerda -->
+
+  <g fill="none" stroke="url(#circuitLine)" stroke-width="1.5"
+
+     stroke-linecap="round" stroke-linejoin="round" opacity=".65">
+
+    <path d="M305 145 H355 L385 175 V230 H425"/>
+
+    <path d="M305 285 H340 L370 255 V225 H410"/>
+
+    <path d="M305 430 H350 L385 395 V350 H430"/>
+
+    <path d="M305 590 H345 L380 555 V510 H420"/>
+
+    <path d="M305 755 H355 L390 720 V675 H430"/>
+
+    <path d="M385 0 V42 L410 67 H455"/>
+
+    <path d="M305 840 H345 L370 815 V785 H410"/>
+
+  </g>
+
+  <!-- Circuitos da direita -->
+
+  <g fill="none" stroke="url(#circuitLine)" stroke-width="1.5"
+
+     stroke-linecap="round" stroke-linejoin="round" opacity=".65">
+
+    <path d="M1728 145 H1675 L1645 175 V230 H1605"/>
+
+    <path d="M1728 285 H1690 L1660 255 V225 H1620"/>
+
+    <path d="M1728 430 H1680 L1645 395 V350 H1600"/>
+
+    <path d="M1728 590 H1685 L1650 555 V510 H1610"/>
+
+    <path d="M1728 755 H1680 L1645 720 V675 H1605"/>
+
+    <path d="M1660 0 V42 L1635 67 H1590"/>
+
+    <path d="M1728 840 H1685 L1660 815 V785 H1620"/>
+
+  </g>
+
+  <!-- Pontos luminosos -->
+
+  <g fill="#c18aff">
+
+    <circle cx="385" cy="175" r="3"/>
+
+    <circle cx="370" cy="255" r="3"/>
+
+    <circle cx="385" cy="395" r="3"/>
+
+    <circle cx="380" cy="555" r="3"/>
+
+    <circle cx="390" cy="720" r="3"/>
+
+    <circle cx="1645" cy="175" r="3"/>
+
+    <circle cx="1660" cy="255" r="3"/>
+
+    <circle cx="1645" cy="395" r="3"/>
+
+    <circle cx="1650" cy="555" r="3"/>
+
+    <circle cx="1645" cy="720" r="3"/>
+
+  </g>
+
+  <!-- Símbolos tecnológicos -->
+
+  <g fill="none" stroke="#a96cff" stroke-width="1.2" opacity=".6">
+
+    <path d="M350 330 V350 M340 340 H360"/>
+
+    <path d="M1680 330 V350 M1670 340 H1690"/>
+
+    <path d="M350 650 V670 M340 660 H360"/>
+
+    <path d="M1680 650 V670 M1670 660 H1690"/>
+
+  </g>
+
+</svg>
+
+
+
+<div class="layout">
+
+
+
+<!-- MENU LATERAL -->
+
+<aside class="sidebar">
+
+
+
+  <div class="brand">
+
+    <div class="logo">
+
+      <svg class="brand-shield" viewBox="0 0 64 64" fill="none">
+
+        <path d="M32 4L55 13V29C55 43 45 54 32 60C19 54 9 43 9 29V13L32 4Z"
+
+          stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+
+        <rect x="23" y="27" width="18" height="16" rx="3" fill="#C49AFF"/>
+
+        <path d="M27 27V22A5 5 0 0 1 37 22V27"
+
+          stroke="#D8B8FF" stroke-width="3" stroke-linecap="round"/>
+
+        <circle cx="32" cy="33" r="2.2" fill="#39205F"/>
+
+        <path d="M32 35V38" stroke="#39205F" stroke-width="2" stroke-linecap="round"/>
+
+      </svg>
+
+    </div>
+
+    <div>
+
+      <b>RSA</b>
+
+      <small>CRIPTOGRAFIA</small>
+
+    </div>
+
+  </div>
+
+
+
+  <nav>
+
+    <button class="nav active" data-page="inicio">
+
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+
+        <path d="M3 10.5L12 3L21 10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <path d="M5.5 9.5V20H18.5V9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <path d="M9.5 20V14H14.5V20" stroke="currentColor" stroke-width="2"/>
+
+      </svg>
+
+      <span>Início</span>
+
+    </button>
+
+
+
+    <button class="nav" data-page="chaves">
+
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+
+        <circle cx="8" cy="15" r="4" stroke="currentColor" stroke-width="2"/>
+
+        <path d="m11 12 9-9m-3 3 3 3m-6 0 3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+
+      </svg>
+
+      <span>Gerar chaves</span>
+
+    </button>
+
+
+
+    <button class="nav" data-page="criptografar">
+
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+
+        <rect x="4" y="10" width="16" height="12" rx="2.5" stroke="currentColor" stroke-width="2"/>
+
+        <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+
+        <circle cx="12" cy="15" r="1.3" fill="currentColor"/>
+
+        <path d="M12 16.5V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+
+      </svg>
+
+      <span>Criptografar</span>
+
+    </button>
+
+
+
+    <button class="nav" data-page="descriptografar">
+
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+
+        <rect x="4" y="10" width="16" height="12" rx="2.5" stroke="currentColor" stroke-width="2"/>
+
+        <path d="M8 10V7a4 4 0 0 1 7.5-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+
+        <circle cx="12" cy="15" r="1.3" fill="currentColor"/>
+
+        <path d="M12 16.5V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+
+      </svg>
+
+      <span>Descriptografar</span>
+
+    </button>
+
+
+
+    <button class="nav" data-page="sobre">
+
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+
+        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+
+        <circle cx="12" cy="8" r="1" fill="currentColor"/>
+
+        <path d="M12 11V16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+
+      </svg>
+
+      <span>Sobre o RSA</span>
+
+    </button>
+
+  </nav>
+
+
+
+  <div class="local">
+
+    <i></i>
+
+    <div>
+
+      <b>Sistema local</b>
+
+
+
+    </div>
+
+  </div>
+
+</aside>
+
+
+
+<main>
+
+
+
+<header>
+
+  <div class="crumb">PROJETO <span>/</span> <b id="crumb">INÍCIO</b></div>
+
+</header>
+
+
+
+<!-- CABEÇALHO -->
+
+<section class="hero">
+
+  <div>
+
+    <h1>Criptografia <em>RSA</em></h1>
+
+    <p>Proteja, transforme e recupere mensagens utilizando o algoritmo RSA.</p>
+
+  </div>
+
+<div class="hero-art rsa-flow" aria-label="Fluxo de criptografia RSA">
+
+  <div class="world-dots"></div>
+
+
+
+  <div class="flow-node">
+
+    <svg viewBox="0 0 64 64" fill="none">
+
+      <path d="M15 7H39L51 19V56H15V7Z"
+
+        stroke="currentColor" stroke-width="2.5"/>
+
+      <path d="M39 7V20H51M23 30H43M23 39H43M23 48H37"
+
+        stroke="currentColor" stroke-width="2.5"
+
+        stroke-linecap="round"/>
+
+    </svg>
+
+    <small>Mensagem</small>
+
+  </div>
+
+
+
+  <span class="flow-arrow">›</span>
+
+
+
+  <div class="rsa-chip">
+
+    <span>RSA</span>
+
+    <small>ALGORITMO</small>
+
+  </div>
+
+
+
+  <span class="flow-arrow">›</span>
+
+
+
+  <div class="flow-node">
+
+    <svg viewBox="0 0 64 64" fill="none">
+
+      <path d="M15 7H39L51 19V56H15V7Z"
+
+        stroke="currentColor" stroke-width="2.5"/>
+
+      <path d="M39 7V20H51"
+
+        stroke="currentColor" stroke-width="2.5"/>
+
+      <rect x="25" y="34" width="17" height="14" rx="3"
+
+        stroke="currentColor" stroke-width="2.5"/>
+
+      <path d="M29 34V29A4.5 4.5 0 0 1 38 29V34"
+
+        stroke="currentColor" stroke-width="2.5"
+
+        stroke-linecap="round"/>
+
+    </svg>
+
+    <small>Texto cifrado</small>
+
+  </div>
+
+</div>
+
+</section>
+
+
+
+<!-- CONTEÚDO PRINCIPAL -->
+
+<section class="columns">
+
+
+
+  <div class="main-card">
+
+
+
+    <div class="section-title">
+
+      <div class="section-icon">
+
+        <svg class="section-lock" viewBox="0 0 24 24" fill="none">
+
+          <rect x="4" y="10" width="16" height="12" rx="2.5" stroke="currentColor" stroke-width="2"/>
+
+          <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+
+          <circle cx="12" cy="15" r="1.3" fill="currentColor"/>
+
+          <path d="M12 16.5V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+
+        </svg>
+
+      </div>
+
+      <div>
+
+        <h2 id="title">Bem-vindo ao sistema RSA</h2>
+
+        <p id="subtitle">Escolha uma operação para começar.</p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- INÍCIO -->
+
+    <section class="page show" id="inicio">
+
+      <div class="actions">
+
+
+
+        <button class="action" data-open="chaves">
+
+          <span>
+
+            <svg class="action-icon" viewBox="0 0 24 24" fill="none">
+
+              <circle cx="8" cy="15" r="4" stroke="currentColor" stroke-width="2"/>
+
+              <path d="m11 12 9-9m-3 3 3 3m-6 0 3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+
+            </svg>
+
+          </span>
+
+          <b>Gerar chaves</b>
+
+          <small>Crie seu par de chaves pública e privada.</small>
+
+          <strong>Acessar operação ↗</strong>
+
+        </button>
+
+
+
+        <button class="action" data-open="criptografar">
+
+          <span>
+
+            <svg class="action-icon" viewBox="0 0 24 24" fill="none">
+
+              <rect x="4" y="10" width="16" height="12" rx="2.5" stroke="currentColor" stroke-width="2"/>
+
+              <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+
+              <circle cx="12" cy="15" r="1.3" fill="currentColor"/>
+
+            </svg>
+
+          </span>
+
+          <b>Criptografar</b>
+
+          <small>Transforme uma mensagem em texto cifrado.</small>
+
+          <strong>Acessar operação ↗</strong>
+
+        </button>
+
+
+
+        <button class="action" data-open="descriptografar">
+
+          <span>
+
+            <svg class="action-icon" viewBox="0 0 24 24" fill="none">
+
+              <rect x="4" y="10" width="16" height="12" rx="2.5" stroke="currentColor" stroke-width="2"/>
+
+              <path d="M8 10V7a4 4 0 0 1 7.5-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+
+            </svg>
+
+          </span>
+
+          <b>Descriptografar</b>
+
+          <small>Recupere a mensagem original.</small>
+
+          <strong>Acessar operação ↗</strong>
+
+        </button>
+
+
+
+      </div>
+
+
+
+    <div class="info">
+
+  <b>
+
+    <svg class="info-icon" viewBox="0 0 24 24" fill="none">
+
+      <circle cx="12" cy="12" r="9"
+
+        stroke="currentColor"
+
+        stroke-width="1.8"/>
+
+      <path d="M9.5 9a2.6 2.6 0 1 1 4.4 1.9c-1.1 1-1.9 1.3-1.9 2.8"
+
+        stroke="currentColor"
+
+        stroke-width="1.8"
+
+        stroke-linecap="round"/>
+
+      <circle cx="12" cy="17" r="1"
+
+        fill="currentColor"/>
+
+    </svg>
+
+    Como funciona?
+
+  </b>
+
+
+
+  <p>
+
+    O RSA utiliza um par de chaves: uma pública, usada para criptografar,
+
+    e outra privada, usada para descriptografar.
+
+  </p>
+
+</div>
+
+    </section>
+
+
+
+    <!-- GERAR CHAVES -->
+
+<section class="page" id="chaves">
+
+
+
+  <div class="form-row key-inputs">
+
+    <label>
+
+      Número primo p
+
+      <input id="p" type="number" placeholder="Ex.: 5">
+
+    </label>
+
+
+
+    <label>
+
+      Número primo q
+
+      <input id="q" type="number" placeholder="Ex.: 11">
+
+    </label>
+
+
+
+    <label>
+
+      Expoente público (e)
+
+      <input id="e" type="number" placeholder="Ex.: 3">
+
+    </label>
+
+  </div>
+
+
+
+  <p class="hint">
+
+    Informe dois números primos distintos e um expoente público
+
+    válido.
+
+  </p>
+
+
+
+  <div class="generate-action">
+
+    <button class="primary" id="gerar">
+
+      <svg class="button-icon" viewBox="0 0 24 24" fill="none">
+
+        <circle cx="8" cy="15" r="4" stroke="currentColor" stroke-width="2"/>
+
+        <path d="m11 12 9-9m-3 3 3 3m-6 0 3 3"
+
+          stroke="currentColor" stroke-width="2"
+
+          stroke-linecap="round"/>
+
+      </svg>
+
+      Calcular chaves RSA
+
+    </button>
+
+  </div>
+
+  <div class="result">
+
+    <b class="result-heading">
+
+      <svg class="terminal-icon" viewBox="0 0 24 24" fill="none">
+
+        <path d="M4 6L10 12L4 18"
+
+          stroke="currentColor"
+
+          stroke-width="2.2"
+
+          stroke-linecap="round"
+
+          stroke-linejoin="round"/>
+
+        <path d="M12 18H21"
+
+          stroke="currentColor"
+
+          stroke-width="2.2"
+
+          stroke-linecap="round"/>
+
+      </svg>
+
+      Resultado
+
+    </b>
+
+
+
+    <p id="key-result">
+
+      As chaves calculadas serão apresentadas aqui.
+
+    </p>
+
+  </div>
+
+
+
+</section>
+
+
+
+    <!-- CRIPTOGRAFAR -->
+    <section class="page" id="criptografar">
+
+      <label>
+        <span class="field-heading">
+          <svg class="field-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M4 4.5H20A2 2 0 0 1 22 6.5V16A2 2 0 0 1 20 18H9L4 21V18H4A2 2 0 0 1 2 16V6.5A2 2 0 0 1 4 4.5Z"
+              stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M7 9H17M7 12.5H15" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          Mensagem original
+        </span>
+
+        <textarea id="message" rows="4"
+          placeholder="Digite a mensagem que deseja criptografar..."></textarea>
+      </label>
+
+      <button class="primary" id="encrypt">
+        <svg class="button-icon" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="10" width="16" height="12" rx="2.5"
+            stroke="currentColor" stroke-width="2"/>
+          <path d="M8 10V7a4 4 0 0 1 8 0v3"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="15" r="1.3" fill="currentColor"/>
+        </svg>
+        Criptografar mensagem
+      </button>
+
+      <div class="result">
+        <b class="result-heading">
+          <svg class="terminal-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M4 6L10 12L4 18"
+              stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 18H21"
+              stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round"/>
+          </svg>
+          Texto cifrado
+        </b>
+
+        <p id="cipher-result">
+          O resultado da criptografia será apresentado aqui.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- DESCRIPTOGRAFAR -->
+
+    <section class="page" id="descriptografar">
+
+
+
+  <label>
+
+    <span class="field-heading">
+
+      <svg class="field-icon" viewBox="0 0 24 24" fill="none">
+
+        <path d="M4 4.5H20A2 2 0 0 1 22 6.5V16A2 2 0 0 1 20 18H9L4 21V18H4A2 2 0 0 1 2 16V6.5A2 2 0 0 1 4 4.5Z"
+
+          stroke="currentColor"
+
+          stroke-width="1.8"
+
+          stroke-linejoin="round"/>
+
+        <circle cx="8" cy="11.5" r="1" fill="currentColor"/>
+
+        <circle cx="12" cy="11.5" r="1" fill="currentColor"/>
+
+        <circle cx="16" cy="11.5" r="1" fill="currentColor"/>
+
+      </svg>
+
+      Mensagem criptografada
+
+    </span>
+
+
+
+    <textarea id="cipher" rows="4"
+
+      placeholder="Digite os números criptografados separados por espaços..."></textarea>
+
+  </label>
+
+
+  <button class="primary" id="decrypt">
+
+    <svg class="button-icon" viewBox="0 0 24 24" fill="none">
+
+      <rect x="4" y="10" width="16" height="12" rx="2.5"
+
+        stroke="currentColor" stroke-width="2"/>
+
+      <path d="M8 10V7a4 4 0 0 1 7.5-2"
+
+        stroke="currentColor" stroke-width="2"
+
+        stroke-linecap="round"/>
+
+      <circle cx="12" cy="15" r="1.3" fill="currentColor"/>
+
+    </svg>
+
+    Descriptografar mensagem
+
+  </button>
+
+
+
+  <div class="result">
+
+    <b class="result-heading">
+
+      <svg class="terminal-icon" viewBox="0 0 24 24" fill="none">
+
+        <path d="M4 6L10 12L4 18"
+
+          stroke="currentColor"
+
+          stroke-width="2.2"
+
+          stroke-linecap="round"
+
+          stroke-linejoin="round"/>
+
+        <path d="M12 18H21"
+
+          stroke="currentColor"
+
+          stroke-width="2.2"
+
+          stroke-linecap="round"/>
+
+      </svg>
+
+      Mensagem original
+
+    </b>
+
+
+
+    <p id="plain-result">
+
+      A mensagem recuperada será exibida aqui.
+
+    </p>
+
+  </div>
+
+
+
+</section>
+
+
+
+    <!-- SOBRE -->
+
+    <section class="page" id="sobre">
+
+      <div class="about">
+
+        <small>ALGORITMO RSA</small>
+
+        <h3>Segurança baseada na matemática</h3>
+
+        <p>O RSA é um algoritmo de criptografia assimétrica. Ele utiliza duas chaves relacionadas matematicamente: a chave pública e a chave privada.</p>
+
+
+
+        <div class="formulas">
+
+          <div>
+
+            <small>CRIPTOGRAFIA</small>
+
+            <code>C = Mᵉ mod n</code>
+
+          </div>
+
+          <div>
+
+            <small>DESCRIPTOGRAFIA</small>
+
+            <code>M = Cᵈ mod n</code>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="code-showcase">
+
+  <div class="code-top">
+
+    <div class="code-dots">
+
+      <i></i><i></i><i></i>
+
+    </div>
+
+    <span>rsa_algorithm.c</span>
+
+    <b>RSA</b>
+
+  </div>
+
+
+
+  <div class="code-content">
+
+    <div><span class="code-purple">1</span> <span class="code-muted">// Processo RSA</span></div>
+
+    <div><span class="code-purple">2</span> <span class="code-blue">gerar_chaves</span>(p, q);</div>
+
+    <div><span class="code-purple">3</span> <span class="code-blue">criptografar</span>(mensagem, e, n);</div>
+
+    <div><span class="code-purple">4</span> <span class="code-blue">descriptografar</span>(cifra, d, n);</div>
+
+    <div><span class="code-purple">5</span> <span class="code-muted">// Segurança matemática</span></div>
+
+  </div>
+
+
+
+  <div class="code-gear">⚙</div>
+
+</div>
+
+      </div>
+
+    </section>
+
+
+
+  </div>
+
+
+
+  <!-- PAINEL DE CHAVES -->
+
+  <aside class="keys" id="keys">
+
+
+
+<div class="keys-head">
+
+  <b>
+
+    <svg width="25" height="25" viewBox="0 0 24 24"
+
+         fill="none" xmlns="http://www.w3.org/2000/svg">
+
+      <circle cx="8" cy="15" r="4"
+
+        stroke="#C39AFF" stroke-width="2.5"/>
+
+      <path d="M11 12L20 3M17 6L20 9M14 9L17 12"
+
+        stroke="#C39AFF"
+
+        stroke-width="2.5"
+
+        stroke-linecap="round"
+
+        stroke-linejoin="round"/>
+
+    </svg>
+
+    <span>Chaves RSA</span>
+
+  </b>
+
+
+
+  <button id="toggle" aria-label="Recolher painel">⌄</button>
+
+</div>
+
+    <div class="keys-body">
+
+      <div class="key">
+
+        <label>
+
+          <span>Chave pública <small>(e, n)</small></span>
+
+          <button data-copy="public" aria-label="Copiar chave pública">
+
+            <svg class="copy-icon" viewBox="0 0 24 24" fill="none">
+
+              <rect x="8" y="7" width="13" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/>
+
+              <path d="M16 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+
+            </svg>
+
+          </button>
+
+        </label>
+
+        <p id="public">Ainda não gerada</p>
+
+      </div>
+
+      <div class="key">
+
+  <label>
+
+    <span>Chave privada <small>(d, n)</small></span>
+
+    <button id="toggle-private" aria-label="Exibir chave privada">
+
+      <svg class="copy-icon" viewBox="0 0 24 24"
+
+           fill="none" stroke="currentColor"
+
+           stroke-width="1.8">
+
+        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/>
+
+        <circle cx="12" cy="12" r="3"/>
+
+      </svg>
+
+    </button>
+
+  </label>
+
+  <p id="private" data-hidden="true">Ainda não gerada</p>
+
+  <small class="note" id="private-status">Chave privada protegida.</small>
+
+</div>
+
+
+
+    </div>
+
+  </aside>
+
+
+
+</section>
+
+
+
+<footer>
+
+  <span>Projeto acadêmico · Interface inicial</span>
+
+</footer>
+
+
+
+</main>
+
+</div>
+
+
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+
+
+
+</body>
+
+</html>

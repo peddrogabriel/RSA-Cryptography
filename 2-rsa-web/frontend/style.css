@@ -1,0 +1,3295 @@
+:root {
+
+    --bg: #080817;
+
+    --panel: #111027;
+
+    --panel-light: #19172f;
+
+    --purple: #984cff;
+
+    --violet: #c18aff;
+
+    --blue: #829bff;
+
+    --text: #f5f1ff;
+
+    --muted: #a49dbd;
+
+    --line: rgba(169,123,255,.25);
+
+    --line-strong: rgba(169,143,255,.65);
+
+}
+
+
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    background:
+
+        radial-gradient(ellipse at 78% 8%,#29144b66,transparent 34%),
+
+        radial-gradient(ellipse at 16% 90%,#29235a55,transparent 36%),
+
+        var(--bg);
+
+    color: var(--text);
+
+    font-family: Inter,Arial,sans-serif;
+
+}
+
+
+
+button,input,textarea {
+
+    font-family: inherit;
+
+}
+
+
+
+button {
+
+    -webkit-tap-highlight-color: transparent;
+
+    cursor: pointer;
+
+}
+
+
+
+/* ===== FUNDO ===== */
+
+
+
+.glow {
+
+    position: fixed;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    opacity: .13;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+}
+
+
+
+.g1 {
+
+    width: 350px;
+
+    height: 350px;
+
+    background: #963cff;
+
+    right: 8%;
+
+    top: -190px;
+
+}
+
+
+
+.g2 {
+
+    width: 300px;
+
+    height: 300px;
+
+    background: #4545d9;
+
+    left: 20%;
+
+    bottom: -180px;
+
+}
+
+
+
+/* ===== ESTRUTURA ===== */
+
+
+
+.layout {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    max-width: 1600px;
+
+    min-height: 100vh;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 250px minmax(0,1fr);
+
+}
+
+
+
+/* ===== MENU LATERAL ===== */
+
+
+
+.sidebar {
+
+    height: 100vh;
+
+    position: sticky;
+
+    top: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 24px 17px;
+
+    background: linear-gradient(160deg,#111024,#09091b);
+
+    border-right: 1px solid var(--line);
+
+    box-shadow: 8px 0 35px #0003;
+
+}
+
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 4px 8px 42px;
+
+}
+
+
+
+.logo {
+
+    width: 62px;
+
+    height: 62px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    background: transparent;
+
+}
+
+
+
+.brand-shield {
+
+    width: 57px;
+
+    height: 57px;
+
+    color: #b98aff;
+
+    overflow: visible;
+
+    filter: drop-shadow(0 0 5px #a45aff88);
+
+}
+
+
+
+.brand b {
+
+    display: block;
+
+    font-size: 22px;
+
+    letter-spacing: .02em;
+
+}
+
+
+
+.brand small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 9px;
+
+    letter-spacing: .17em;
+
+    color: #b48be8;
+
+}
+
+
+
+.nav-caption {
+
+    padding: 0 12px 13px;
+
+    font-size: 9px;
+
+    letter-spacing: .18em;
+
+    color: #77718d;
+
+}
+
+
+
+nav {
+
+    display: grid;
+
+    gap: 8px;
+
+}
+
+
+
+.nav {
+
+    min-height: 46px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 11px 13px;
+
+    border: 1px solid transparent;
+
+    border-radius: 11px;
+
+    background: transparent;
+
+    color: #c8c1dc;
+
+    text-align: left;
+
+    font: 500 13px Inter,sans-serif;
+
+    transition: .25s ease;
+
+}
+
+
+
+.nav span {
+
+    margin: 0;
+
+}
+
+
+
+.nav-icon {
+
+    width: 21px;
+
+    height: 21px;
+
+    flex-shrink: 0;
+
+    color: #c39aff;
+
+    filter: drop-shadow(0 0 4px #a45aff55);
+
+    transition: .2s ease;
+
+}
+
+
+
+.nav:hover,
+
+.nav.active {
+
+    color: white;
+
+    background: linear-gradient(100deg,#873ce755,#5650a522);
+
+    border-color: #b17aff88;
+
+    box-shadow: 0 0 15px #873ce522;
+
+}
+
+
+
+.nav.active {
+
+    background: linear-gradient(100deg,#8c32e8,#6927c7 55%,#5126a7);
+
+    border-color: #c28aff;
+
+    box-shadow:
+
+        0 0 10px #963cff99,
+
+        0 0 22px #873ce577,
+
+        inset 0 1px 8px #ffffff33;
+
+}
+
+
+
+.nav.active .nav-icon {
+
+    color: white;
+
+    filter: drop-shadow(0 0 5px #ffffff88);
+
+}
+
+
+
+.local {
+
+    margin-top: auto;
+
+    padding: 14px 10px;
+
+    border: 1px solid #a17ad622;
+
+    border-radius: 11px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    background: #ffffff05;
+
+}
+
+
+
+.local i,
+
+.online i {
+
+    width: 7px;
+
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #63e4ad;
+
+    box-shadow: 0 0 9px #63e4ad;
+
+}
+
+
+
+.local b,.local small {
+
+    display: block;
+
+}
+
+
+
+.local b {
+
+    font-size: 11px;
+
+}
+
+
+
+.local small {
+
+    margin-top: 3px;
+
+    font-size: 9px;
+
+    color: #88819f;
+
+}
+
+
+
+/* ===== CONTEÚDO ===== */
+
+
+
+main {
+
+    min-width: 0;
+
+    padding: 0 24px 20px;
+
+}
+
+
+
+header {
+
+    height: 68px;
+
+    border-bottom: 1px solid #a17ad622;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+
+.crumb {
+
+    font-size: 9px;
+
+    letter-spacing: .15em;
+
+    color: #77718f;
+
+}
+
+
+
+.crumb span {
+
+    padding: 0 9px;
+
+    color: #54496c;
+
+}
+
+
+
+.crumb b {
+
+    color: #c7a8f1;
+
+}
+
+
+
+.online {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-size: 10px;
+
+    color: #a49db7;
+
+}
+
+
+
+/* ===== HERO ===== */
+
+
+
+.hero {
+
+    height: 145px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    position: relative;
+
+    min-width: 0;
+
+    overflow: visible;
+
+}
+
+
+
+.eyebrow {
+
+    font-size: 9px;
+
+    letter-spacing: .19em;
+
+    color: #bd94f2;
+
+    font-weight: 700;
+
+}
+
+
+
+.hero h1 {
+
+    margin: 10px 0 8px;
+
+    font-size: 42px;
+
+    letter-spacing: -.05em;
+
+    line-height: 1.1;
+
+}
+
+
+
+.hero h1 em {
+
+    font-style: normal;
+
+    background: linear-gradient(90deg,#aa83ff,#e08aff);
+
+    background-clip: text;
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+
+}
+
+
+
+.hero p {
+
+    margin: 0;
+
+    font-size: 13px;
+
+    color: #d0c9df;
+
+}
+
+
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 8px;
+
+    width: 105px;
+
+    height: 3px;
+
+    border-radius: 5px;
+
+    background: linear-gradient(90deg,#8b42ff,#d38aff);
+
+    box-shadow: 0 0 12px #a34cff;
+
+}
+
+
+
+/* ===== ILUSTRAÇÃO ===== */
+
+
+
+.hero-art {
+
+    width: 330px;
+
+    height: 145px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    position: relative;
+
+    isolation: isolate;
+
+    overflow: hidden;
+
+    margin-right: 5px;
+
+    background: radial-gradient(ellipse at 50% 65%,#34206d66,transparent 58%);
+
+}
+
+
+
+.world-dots {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .48;
+
+    background-image: radial-gradient(circle,#657cff 1px,transparent 1.5px);
+
+    background-size: 6px 6px;
+
+    mask-image: radial-gradient(ellipse at 50% 42%,#000 0%,transparent 72%);
+
+    -webkit-mask-image: radial-gradient(ellipse at 50% 42%,#000 0%,transparent 72%);
+
+}
+
+
+
+.world-dots::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(90deg,transparent,#09091b55 48%,transparent);
+
+}
+
+
+
+.orbit {
+
+    position: absolute;
+
+    border: 1px solid #8e78ff66;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+}
+
+
+
+.orbit-back {
+
+    width: 310px;
+
+    height: 72px;
+
+    bottom: 8px;
+
+    transform: rotate(-4deg);
+
+    box-shadow: 0 0 12px #5d70ff33;
+
+}
+
+
+
+.orbit-front {
+
+    width: 250px;
+
+    height: 48px;
+
+    bottom: 15px;
+
+    transform: rotate(3deg);
+
+    border-color: #e184ff88;
+
+    box-shadow: 0 0 15px #b44cff55;
+
+}
+
+
+
+.energy-rings {
+
+    position: absolute;
+
+    bottom: 12px;
+
+    width: 280px;
+
+    height: 36px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(ellipse,#b34dff55 0%,#6d6aff33 35%,transparent 72%);
+
+    filter: blur(5px);
+
+}
+
+
+
+.energy-rings i {
+
+    position: absolute;
+
+    inset: 4px 20px;
+
+    border: 1px solid #6daeff88;
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 9px #668aff88;
+
+}
+
+
+
+.energy-rings i:nth-child(2) {
+
+    inset: 9px 43px;
+
+    border-color: #d27bff;
+
+}
+
+
+
+.energy-rings i:nth-child(3) {
+
+    inset: 14px 68px;
+
+    border-color: #80dfff;
+
+}
+
+
+
+.neon-lock {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 145px;
+
+    height: 155px;
+
+    margin-top: -12px;
+
+    overflow: visible;
+
+    filter: drop-shadow(0 0 7px #6c8fff) drop-shadow(0 0 14px #b34dff88);
+
+}
+
+
+
+/* ===== COLUNAS E PAINÉIS ===== */
+
+
+
+.columns {
+
+    display: grid;
+
+    grid-template-columns: minmax(0,1fr) 260px;
+
+    gap: 18px;
+
+    align-items: start;
+
+}
+
+
+
+.main-card,
+
+.keys {
+
+    border: 1px solid var(--line-strong);
+
+    border-radius: 18px;
+
+    background: linear-gradient(145deg,#19182fef,#101126f5);
+
+    box-shadow: 0 12px 35px #0003;
+
+}
+
+
+
+.main-card {
+
+    min-width: 0;
+
+    min-height: 420px;
+
+    padding: 17px 20px;
+
+    border-color: rgba(137,155,255,.65);
+
+}
+
+
+
+/* ===== TÍTULO INTERNO ===== */
+
+
+
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding-bottom: 15px;
+
+    margin-bottom: 18px;
+
+    border-bottom: 1px solid #a17ad622;
+
+}
+
+
+
+.section-icon {
+
+    width: 46px;
+
+    height: 46px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 12px;
+
+    background: #984cff22;
+
+    border: 1px solid #b27bff55;
+
+    color: #d1adff;
+
+}
+
+
+
+.section-lock {
+
+    width: 27px;
+
+    height: 27px;
+
+}
+
+
+
+.section-title h2 {
+
+    margin: 0 0 5px;
+
+    font-size: 19px;
+
+}
+
+
+
+.section-title p {
+
+    margin: 0;
+
+    font-size: 12px;
+
+    color: #aaa2c0;
+
+}
+
+
+
+.page {
+
+    display: none;
+
+}
+
+
+
+.page.show {
+
+    display: block;
+
+}
+
+
+
+/* ===== PÁGINA INICIAL - DIMENSÕES AJUSTADAS ===== */
+
+
+
+\#inicio {
+
+    display: none;
+
+}
+
+
+
+\#inicio.show {
+
+    display: block;
+
+    min-height: 0;
+
+}
+
+
+
+/* Organização dos três cartões */
+
+.actions {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+
+    align-items: stretch;
+
+}
+
+
+
+/* Cartões */
+
+.action {
+
+    min-width: 0;
+
+    height: 190px;
+
+    min-height: 190px;
+
+    padding: 19px 17px;
+
+
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+
+
+    text-align: left;
+
+    border: 1px solid #a17ad633;
+
+    border-radius: 13px;
+
+
+
+    background: linear-gradient(
+
+        145deg,
+
+        #28204a88,
+
+        #10142caa
+
+    );
+
+
+
+    color: var(--text);
+
+    transition: .25s ease;
+
+}
+
+
+
+.action:hover {
+
+    transform: translateY(-3px);
+
+    border-color: #c28aff;
+
+    box-shadow: 0 8px 24px #893ce533;
+
+}
+
+
+
+/* Ícones */
+
+.action span {
+
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: #c69aff;
+
+}
+
+
+
+.action-icon {
+
+    width: 29px;
+
+    height: 29px;
+
+    color: #c69aff;
+
+    filter: drop-shadow(0 0 5px #a45aff55);
+
+}
+
+
+
+/* Textos */
+
+.action b {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 15px;
+
+}
+
+
+
+.action small {
+
+    display: block;
+
+    min-height: 0;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    color: #a49dbb;
+
+}
+
+
+
+/* Link inferior */
+
+.action strong {
+
+    display: block;
+
+    margin-top: auto;
+
+    padding-top: 10px;
+
+    font-size: 10px;
+
+    color: #c69aff;
+
+}
+
+
+
+/* Caixa Como funciona */
+
+.info {
+
+    min-height: 95px;
+
+    margin-top: 15px;
+
+    padding: 17px 19px;
+
+
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+
+
+    border: 1px solid #a17ad633;
+
+    border-radius: 11px;
+
+    background: #5951a00d;
+
+}
+
+
+
+.info b {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 13px;
+
+}
+
+
+
+.info-icon {
+
+    width: 21px;
+
+    height: 21px;
+
+    flex-shrink: 0;
+
+    color: #c39aff;
+
+    filter: drop-shadow(0 0 5px #a45aff77);
+
+}
+
+
+
+.info p {
+
+    margin: 7px 0 0;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    color: #a59fbd;
+
+}
+
+
+
+/* ==========================================*
+
+*   PAINEL DE CHAVES RSA - COMPACTO*
+
+*========================================== */
+
+
+
+.keys {
+
+    width: 100%;
+
+    min-width: 0;
+
+    overflow: hidden;
+
+    border: 1.5px solid rgba(176,132,255,.8);
+
+    border-radius: 17px;
+
+    background: linear-gradient(145deg,#19162e,#111124);
+
+    box-shadow: 0 0 18px rgba(140,70,255,.10);
+
+}
+
+
+
+.keys-head {
+
+    min-height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+    padding: 0 14px;
+
+    border-bottom: 1px solid #a17ad622;
+
+}
+
+
+
+.keys-head b {
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 14px;
+
+    white-space: nowrap;
+
+}
+
+
+
+.key-panel-icon {
+
+    width: 23px;
+
+    height: 23px;
+
+    flex-shrink: 0;
+
+    color: #c39aff;
+
+    filter: drop-shadow(0 0 4px #a45aff66);
+
+}
+
+
+
+.keys-head button {
+
+    width: 25px;
+
+    height: 25px;
+
+    flex-shrink: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #c6a0ff;
+
+    font-size: 20px;
+
+    transition: transform .2s;
+
+}
+
+
+
+.keys-body {
+
+    padding: 15px 14px 17px;
+
+}
+
+
+
+.key {
+
+    min-width: 0;
+
+    margin-bottom: 17px;
+
+}
+
+
+
+.key label {
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 5px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: #e1d9ef;
+
+    white-space: nowrap;
+
+}
+
+
+
+.key label span {
+
+    min-width: 0;
+
+}
+
+
+
+.key label small {
+
+    margin-left: 2px;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    color: #a69bbd;
+
+}
+
+
+
+.key label button {
+
+    width: 23px;
+
+    height: 23px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #c49aff;
+
+    transition: .2s ease;
+
+}
+
+
+
+.copy-icon {
+
+    width: 19px;
+
+    height: 19px;
+
+}
+
+
+
+.key label button:hover {
+
+    color: #f0dfff;
+
+    transform: scale(1.1);
+
+}
+
+
+
+.key p {
+
+    min-height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    margin: 7px 0 0;
+
+    padding: 10px 11px;
+
+    border: 1px solid #8f65c9;
+
+    border-radius: 9px;
+
+    background: rgba(8,9,28,.85);
+
+    color: #d8c8f4;
+
+    font: 11px 'JetBrains Mono',monospace;
+
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+
+    box-shadow: inset 0 0 10px #8f55dc0d;
+
+}
+
+
+
+.note {
+
+    display: block;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+
+    color: #827a99;
+
+}
+
+
+
+/* Painel recolhido */
+
+
+
+.keys.collapsed {
+
+    width: 58px;
+
+}
+
+
+
+.keys.collapsed .keys-head {
+
+    min-height: 115px;
+
+    flex-direction: column;
+
+    justify-content: flex-start;
+
+    padding: 12px 0;
+
+    gap: 10px;
+
+}
+
+
+
+.keys.collapsed .keys-head b span {
+
+    display: none;
+
+}
+
+
+
+.keys.collapsed .keys-head b {
+
+    font-size: 0;
+
+}
+
+
+
+.keys.collapsed .keys-head button {
+
+    transform: rotate(-90deg);
+
+}
+
+
+
+.keys.collapsed .keys-body {
+
+    display: none;
+
+}
+
+
+
+/* ===== FORMULÁRIOS ===== */
+
+
+
+label {
+
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    color: #d7d1e8;
+
+}
+
+
+
+input,textarea {
+
+    display: block;
+
+    width: 100%;
+
+    margin-top: 8px;
+
+    padding: 12px;
+
+    border: 1px solid #a17ad655;
+
+    border-radius: 9px;
+
+    background: #08091caa;
+
+    color: white;
+
+    font: 12px Inter,sans-serif;
+
+    outline: none;
+
+    transition: .2s;
+
+}
+
+
+
+input:focus,textarea:focus {
+
+    border-color: #bb8aff;
+
+    box-shadow: 0 0 0 3px #984cff22;
+
+}
+
+
+
+textarea {
+
+    resize: vertical;
+
+    line-height: 1.6;
+
+}
+
+
+
+.form-row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 14px;
+
+}
+
+
+
+.hint {
+
+    margin: 9px 0 15px;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+    color: #8983a2;
+
+}
+
+
+
+/* ===== BOTÕES ===== */
+
+
+
+.primary {
+
+    min-width: 225px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    margin: 17px auto 19px;
+
+    padding: 12px 22px;
+
+    border: 1px solid #d9a7ff;
+
+    border-radius: 30px;
+
+    background: linear-gradient(100deg,#8c35e9,#a044f5 48%,#7045e8);
+
+    color: white;
+
+    font: 700 12px Inter,sans-serif;
+
+    box-shadow:
+
+        0 0 8px #a64cff,
+
+        0 0 18px #963cff99,
+
+        0 0 30px #8135ff44,
+
+        inset 0 1px 5px #ffffff55;
+
+    transition: .25s ease;
+
+}
+
+
+
+.primary:hover {
+
+    transform: translateY(-2px);
+
+    filter: brightness(1.15);
+
+    box-shadow: 0 0 12px #c17aff,0 0 25px #a044f5;
+
+}
+
+
+
+.primary:active {
+
+    transform: scale(.97);
+
+}
+
+
+
+.button-icon {
+
+    width: 19px;
+
+    height: 19px;
+
+    flex-shrink: 0;
+
+    color: white;
+
+}
+
+
+
+/* ===== RESULTADOS ===== */
+
+
+
+.result {
+
+    padding: 13px;
+
+    border: 1px solid #7d85dc55;
+
+    border-radius: 10px;
+
+    background: #07091aaa;
+
+}
+
+
+
+.result b {
+
+    font-size: 11px;
+
+}
+
+
+
+.result p {
+
+    min-height: 34px;
+
+    margin: 9px 0 0;
+
+    padding: 10px;
+
+    border: 1px solid #a17ad633;
+
+    border-radius: 7px;
+
+    background: #ffffff06;
+
+    color: #a8a2bf;
+
+    font: 10px 'JetBrains Mono',monospace;
+
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+
+}
+
+
+
+/* ===== SOBRE O RSA ===== */
+
+
+
+.about {
+
+    padding: 20px;
+
+    border: 1px solid #a17ad633;
+
+    border-radius: 11px;
+
+    background: #ffffff05;
+
+}
+
+
+
+.about>small,.formulas small {
+
+    font-size: 9px;
+
+    letter-spacing: .15em;
+
+    color: #c29af3;
+
+}
+
+
+
+.about h3 {
+
+    margin: 10px 0;
+
+    font-size: 20px;
+
+}
+
+
+
+.about p {
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    color: #aaa4c0;
+
+}
+
+
+
+.formulas {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 18px;
+
+}
+
+
+
+.formulas div {
+
+    padding: 13px;
+
+    border: 1px solid #a17ad633;
+
+    border-radius: 9px;
+
+}
+
+
+
+.formulas small {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+}
+
+
+
+.formulas code {
+
+    font: 13px 'JetBrains Mono',monospace;
+
+    color: #e1cfff;
+
+}
+
+
+
+/* ===== RODAPÉ ===== */
+
+
+
+footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 18px 3px;
+
+    color: #68627e;
+
+    font-size: 9px;
+
+}
+
+
+
+/* ===== NOTIFICAÇÃO ===== */
+
+
+
+.toast {
+
+    position: fixed;
+
+    right: 22px;
+
+    bottom: 22px;
+
+    z-index: 10;
+
+    padding: 12px 15px;
+
+    border: 1px solid #b17aff77;
+
+    border-radius: 9px;
+
+    background: #21163d;
+
+    color: #eee5ff;
+
+    font-size: 11px;
+
+    opacity: 0;
+
+    transform: translateY(8px);
+
+    transition: .2s;
+
+    pointer-events: none;
+
+}
+
+
+
+.toast.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+
+/* ===== RESPONSIVIDADE ===== */
+
+
+
+@media (max-width: 1100px) {
+
+    .layout {
+
+        grid-template-columns: 220px minmax(0,1fr);
+
+    }
+
+
+
+    main {
+
+        padding: 0 18px 20px;
+
+    }
+
+
+
+    .hero h1 {
+
+        font-size: 36px;
+
+    }
+
+
+
+    .hero-art {
+
+        width: 250px;
+
+    }
+
+
+
+    .columns {
+
+        grid-template-columns: minmax(0,1fr) 245px;
+
+    }
+
+}
+
+
+
+@media (max-width: 760px) {
+
+    .layout {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+
+    .sidebar {
+
+        width: 100%;
+
+        height: auto;
+
+        position: relative;
+
+        padding: 14px;
+
+        border-right: 0;
+
+        border-bottom: 1px solid var(--line);
+
+    }
+
+
+
+    .brand {
+
+        padding: 0 5px 12px;
+
+    }
+
+
+
+    .nav-caption,.local {
+
+        display: none;
+
+    }
+
+
+
+    nav {
+
+        display: flex;
+
+        gap: 5px;
+
+        overflow-x: auto;
+
+    }
+
+
+
+    .nav {
+
+        flex-shrink: 0;
+
+        white-space: nowrap;
+
+        min-height: 40px;
+
+        padding: 9px;
+
+    }
+
+
+
+    main {
+
+        padding: 0 12px 18px;
+
+    }
+
+
+
+    header {
+
+        height: 48px;
+
+    }
+
+
+
+    .hero {
+
+        height: 145px;
+
+        overflow: hidden;
+
+    }
+
+
+
+    .hero h1 {
+
+        font-size: 32px;
+
+    }
+
+
+
+    .hero p {
+
+        font-size: 11px;
+
+    }
+
+
+
+    .hero-art {
+
+        display: none;
+
+    }
+
+
+
+    .columns {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+
+    .keys {
+
+        grid-row: 1;
+
+    }
+
+
+
+    .keys.collapsed {
+
+        width: 100%;
+
+    }
+
+
+
+    .keys.collapsed .keys-head {
+
+        min-height: 52px;
+
+        flex-direction: row;
+
+        justify-content: space-between;
+
+        padding: 0 15px;
+
+    }
+
+
+
+    .keys.collapsed .keys-head b {
+
+        flex-direction: row;
+
+        writing-mode: initial;
+
+    }
+
+
+
+    .keys.collapsed .keys-head b span {
+
+        display: inline;
+
+    }
+
+
+
+    .keys.collapsed .keys-head button {
+
+        transform: rotate(-90deg);
+
+    }
+
+
+
+    .main-card {
+
+        min-height: 0;
+
+        padding: 16px;
+
+    }
+
+
+
+    .actions {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+
+    .action {
+
+        min-height: 120px;
+
+    }
+
+
+
+    .form-row,.formulas {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+
+    .primary {
+
+        width: 100%;
+
+        min-width: 0;
+
+    }
+
+}
+
+
+
+@media (max-width: 420px) {
+
+    .hero h1 {
+
+        font-size: 28px;
+
+    }
+
+
+
+    .eyebrow {
+
+        font-size: 8px;
+
+    }
+
+
+
+    .section-title h2 {
+
+        font-size: 16px;
+
+    }
+
+
+
+    .keys-head b {
+
+        font-size: 13px;
+
+    }
+
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,*::before,*::after {
+
+        scroll-behavior: auto !important;
+
+        transition-duration: .01ms !important;
+
+        animation-duration: .01ms !important;
+
+    }
+
+}
+
+
+
+/* ===== ÍCONES DOS CAMPOS E RESULTADOS ===== */
+
+
+
+.field-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 8px;
+
+    color: #eee8ff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+
+.field-icon {
+
+    width: 21px;
+
+    height: 21px;
+
+    flex-shrink: 0;
+
+    color: #b99aff;
+
+    filter: drop-shadow(0 0 5px #9b60ff88);
+
+}
+
+
+
+.result-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #eee8ff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+
+.terminal-icon {
+
+    width: 23px;
+
+    height: 23px;
+
+    flex-shrink: 0;
+
+    color: #b99aff;
+
+    filter: drop-shadow(0 0 5px #9b60ff88);
+
+}
+
+
+
+
+
+/* Ícone de informação */
+
+.info-icon {
+
+    width: 23px;
+
+    height: 23px;
+
+    flex-shrink: 0;
+
+    color: #c39aff;
+
+    filter: drop-shadow(0 0 5px #a45aff77);
+
+}
+
+
+
+
+
+/* ===== FUNDO TECNOLÓGICO CYBER VIOLET ===== */
+
+
+
+.layout {
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+
+
+.tech-background {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    opacity: .85;
+
+}
+
+
+
+/* Mantém o conteúdo acima dos elementos decorativos */
+
+.sidebar,
+
+main {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+
+/* Brilhos nas laterais */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+
+
+    background:
+
+        radial-gradient(
+
+            ellipse at 0% 45%,
+
+            rgba(119, 42, 255, .10),
+
+            transparent 28%
+
+        ),
+
+        radial-gradient(
+
+            ellipse at 100% 65%,
+
+            rgba(173, 52, 255, .09),
+
+            transparent 28%
+
+        );
+
+
+
+}
+
+
+
+/* ===== CORREÇÃO DO CADEADO DO CABEÇALHO ===== */
+
+
+
+.hero {
+
+    position: relative;
+
+    overflow: visible;
+
+}
+
+
+
+.hero-art {
+
+    position: relative;
+
+    z-index: 3;
+
+    overflow: visible;
+
+}
+
+
+
+.neon-lock {
+
+    position: relative;
+
+    z-index: 2;
+
+    overflow: visible;
+
+}
+
+
+
+/* Ajustes finais do mapa e circuitos */
+
+.tech-background {
+
+    opacity: .72;
+
+}
+
+
+
+/* Preserva a visibilidade do mapa atrás do cadeado */
+
+.hero-art {
+
+    position: relative;
+
+    z-index: 3;
+
+}
+
+
+
+/* Evita que os elementos decorativos recebam cliques */
+
+.tech-background {
+
+    pointer-events: none;
+
+}
+
+
+
+/* Em telas menores, reduzir a intensidade */
+
+@media (max-width: 900px) {
+
+    .tech-background {
+
+        opacity: .35;
+
+    }
+
+}
+
+
+
+/* ===== CADEADO DIGITAL E BASE NEON ===== */
+
+
+
+.hero-art {
+
+    position: relative;
+
+    isolation: isolate;
+
+}
+
+
+
+/* Mapa atrás do cadeado */
+
+.world-dots {
+
+    opacity: .85;
+
+    filter: drop-shadow(0 0 8px #665aff66);
+
+}
+
+
+
+/* Órbitas luminosas */
+
+.orbit {
+
+    border-color: rgba(135, 112, 255, .65);
+
+    box-shadow:
+
+        0 0 8px #765aff55,
+
+        inset 0 0 8px #765aff33;
+
+}
+
+
+
+.orbit-back {
+
+    opacity: .8;
+
+}
+
+
+
+.orbit-front {
+
+    opacity: .95;
+
+}
+
+
+
+/* Base com três anéis de energia */
+
+.energy-rings {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 5%;
+
+    width: 90%;
+
+    height: 45%;
+
+    transform: translateX(-50%);
+
+    z-index: 1;
+
+    pointer-events: none;
+
+}
+
+
+
+.energy-rings i {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 100%;
+
+    height: 55%;
+
+    border: 2px solid rgba(95, 175, 255, .85);
+
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+
+    box-shadow:
+
+        0 0 8px #4b9dff,
+
+        0 0 18px #795aff66;
+
+}
+
+
+
+.energy-rings i:nth-child(2) {
+
+    width: 85%;
+
+    height: 75%;
+
+    border-color: rgba(157, 100, 255, .9);
+
+    box-shadow:
+
+        0 0 9px #8e4dff,
+
+        0 0 20px #a34dff77;
+
+}
+
+
+
+.energy-rings i:nth-child(3) {
+
+    width: 70%;
+
+    height: 95%;
+
+    border-color: rgba(218, 105, 255, .85);
+
+    box-shadow:
+
+        0 0 8px #d65aff,
+
+        0 0 18px #d65aff66;
+
+}
+
+
+
+/* Cadeado acima dos anéis */
+
+.neon-lock {
+
+    position: relative;
+
+    z-index: 3;
+
+    filter:
+
+        drop-shadow(0 0 8px #6daaff)
+
+        drop-shadow(0 0 15px #a34dff88);
+
+}
+
+/* =========================================================
+   AJUSTES FINAIS — MAPA DIGITAL, CIRCUITOS E CADEADO NEON
+   ========================================================= */
+
+/* O SVG decorativo fica atrás da interface, sem interferir nos cliques. */
+.tech-background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: .62;
+    pointer-events: none;
+}
+
+/* Mantém os circuitos nas bordas, sem competir com os textos. */
+.tech-background g[stroke="url(#circuitLine)"] {
+    opacity: .42;
+}
+
+/* Área do cadeado: mais limpa e com espaço para o mapa. */
+.hero-art {
+    width: min(390px, 34vw);
+    height: 155px;
+    flex: 0 0 auto;
+    margin-right: 0;
+    overflow: visible;
+    isolation: isolate;
+    background:
+        radial-gradient(ellipse at 58% 66%, rgba(91, 62, 190, .20), transparent 62%);
+}
+
+/* O mapa do SVG principal aparece atrás do cadeado com pontos mais definidos. */
+.world-dots {
+    opacity: .22;
+    background-image: radial-gradient(circle, #7d8cff .9px, transparent 1.45px);
+    background-size: 5px 5px;
+    mask-image: radial-gradient(ellipse at 52% 48%, #000 0%, transparent 76%);
+    -webkit-mask-image: radial-gradient(ellipse at 52% 48%, #000 0%, transparent 76%);
+    filter: drop-shadow(0 0 7px rgba(91, 111, 255, .25));
+}
+
+/* Anéis definidos: o brilho fica separado das linhas para evitar a mancha roxa. */
+.energy-rings {
+    left: 50%;
+    bottom: 7px;
+    width: 310px;
+    height: 58px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: transparent;
+    filter: none;
+    z-index: 1;
+}
+
+.energy-rings::before {
+    content: "";
+    position: absolute;
+    inset: 4px 20px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(104, 81, 255, .22), transparent 72%);
+    filter: blur(9px);
+}
+
+.energy-rings i {
+    inset: 5px 5px;
+    border: 1px solid rgba(103, 178, 255, .82);
+    box-shadow: 0 0 7px rgba(76, 153, 255, .72), inset 0 0 8px rgba(76, 153, 255, .18);
+    transform: rotate(-3deg);
+}
+
+.energy-rings i:nth-child(2) {
+    inset: 12px 28px;
+    border: 1px solid rgba(177, 105, 255, .9);
+    box-shadow: 0 0 9px rgba(160, 75, 255, .7), inset 0 0 8px rgba(160, 75, 255, .15);
+    transform: rotate(3deg);
+}
+
+.energy-rings i:nth-child(3) {
+    inset: 19px 57px;
+    border: 1px solid rgba(218, 126, 255, .8);
+    box-shadow: 0 0 8px rgba(214, 90, 255, .65);
+    transform: rotate(-1deg);
+}
+
+/* Cadeado destacado, com contorno azul-violeta e preenchimento translúcido. */
+.neon-lock {
+    width: 150px;
+    height: 158px;
+    margin-top: -8px;
+    z-index: 3;
+    filter:
+        drop-shadow(0 0 5px rgba(91, 174, 255, .95))
+        drop-shadow(0 0 13px rgba(156, 77, 255, .72))
+        drop-shadow(0 0 22px rgba(201, 74, 255, .28));
+}
+
+/* A ilustração não deve cobrir os elementos principais nem causar corte. */
+.hero {
+    overflow: visible;
+}
+
+@media (max-width: 1100px) {
+    .hero-art {
+        width: 270px;
+    }
+    .tech-background {
+        opacity: .42;
+    }
+}
+
+@media (max-width: 760px) {
+    .tech-background {
+        opacity: .22;
+    }
+}
+
+
+/* =========================================
+   AJUSTE DOS ORBITAIS E CIRCUITOS
+   ========================================= */
+
+/* Orbitais mais discretos e próximos ao cadeado */
+.energy-rings {
+    width: 260px;
+    height: 34px;
+    bottom: 12px;
+    opacity: 0.65;
+}
+
+.energy-rings i {
+    inset: 7px 12px;
+    border-width: 1px;
+    box-shadow: 0 0 5px rgba(76, 153, 255, 0.35);
+}
+
+.energy-rings i:nth-child(2) {
+    inset: 11px 32px;
+    box-shadow: 0 0 5px rgba(160, 75, 255, 0.35);
+}
+
+.energy-rings i:nth-child(3) {
+    inset: 15px 55px;
+    box-shadow: 0 0 4px rgba(214, 90, 255, 0.3);
+}
+
+/* Reduz o brilho excessivo do fundo dos anéis */
+.energy-rings::before {
+    opacity: 0.35;
+    filter: blur(5px);
+}
+
+/* Mantém o cadeado como elemento principal */
+.neon-lock {
+    filter:
+        drop-shadow(0 0 4px rgba(91, 174, 255, 0.65))
+        drop-shadow(0 0 9px rgba(156, 77, 255, 0.45));
+}
+
+/* Evita que os circuitos atrapalhem a leitura do cabeçalho */
+.hero {
+    position: relative;
+    isolation: isolate;
+}
+
+.hero > div:first-child {
+    position: relative;
+    z-index: 2;
+    padding: 8px 18px 8px 0;
+    background: linear-gradient(
+        90deg,
+        rgba(8, 8, 23, 0.98) 0%,
+        rgba(8, 8, 23, 0.94) 78%,
+        transparent 100%
+    );
+}
+
+/* Suaviza os circuitos próximos ao conteúdo */
+.tech-background {
+    opacity: 0.42;
+}
+
+@media (max-width: 760px) {
+    .hero > div:first-child {
+        background: linear-gradient(
+            90deg,
+            rgba(8, 8, 23, 0.98),
+            rgba(8, 8, 23, 0.88)
+        );
+    }
+
+    .energy-rings {
+        opacity: 0.5;
+    }
+}
+
+/* =========================================
+   PROTEÇÃO DO TÍTULO CONTRA LINHAS DE CIRCUITO
+   ========================================= */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+}
+
+/* Cria uma área de leitura limpa atrás dos textos */
+.hero > div:first-child {
+    position: relative;
+    z-index: 5;
+    padding: 12px 35px 12px 0;
+    border-radius: 8px;
+
+    background: linear-gradient(
+        90deg,
+        rgba(8, 8, 23, 0.99) 0%,
+        rgba(8, 8, 23, 0.97) 65%,
+        rgba(8, 8, 23, 0.85) 88%,
+        transparent 100%
+    );
+}
+
+/* Mantém a ilustração acima do fundo decorativo */
+.hero-art {
+    position: relative;
+    z-index: 3;
+}
+
+/* Deixa os circuitos mais discretos no restante da página */
+.tech-background {
+    opacity: 0.38;
+    pointer-events: none;
+}
+
+/* Brilho neon médio nas linhas dos circuitos */
+.tech-background path,
+.tech-background line,
+.tech-background polyline {
+    stroke: #9470ff;
+    filter:
+        drop-shadow(0 0 2px rgba(147, 112, 255, 0.75))
+        drop-shadow(0 0 5px rgba(120, 85, 255, 0.45));
+}
+
+/* Mantém o fundo discreto, sem apagar o brilho */
+.tech-background {
+    opacity: 0.65;
+}
+/* ===== FLUXO DE CRIPTOGRAFIA RSA ===== */
+
+.rsa-flow {
+    width: 440px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    overflow: visible;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(112, 65, 220, .13),
+        transparent 72%
+    );
+}
+
+.rsa-flow .world-dots {
+    opacity: .38;
+    z-index: -1;
+}
+
+.flow-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    position: relative;
+    z-index: 2;
+}
+
+.flow-node svg {
+    width: 57px;
+    height: 57px;
+    color: #b99aff;
+    filter:
+        drop-shadow(0 0 4px #a45aff)
+        drop-shadow(0 0 10px rgba(164, 90, 255, .55));
+}
+
+.flow-node small {
+    font-size: 9px;
+    color: #bdb1d8;
+    white-space: nowrap;
+}
+
+.flow-arrow {
+    font-size: 34px;
+    color: #bd8aff;
+    text-shadow: 0 0 10px #a45aff;
+    margin-top: -15px;
+}
+
+.rsa-chip {
+    width: 85px;
+    height: 85px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border: 2px solid #bd8aff;
+    border-radius: 17px;
+    background: linear-gradient(
+        145deg,
+        #38205f,
+        #17112e
+    );
+    box-shadow:
+        0 0 7px #a45aff,
+        0 0 18px rgba(164, 90, 255, .55),
+        inset 0 0 15px rgba(164, 90, 255, .2);
+}
+
+.rsa-chip span {
+    font-size: 23px;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 0 10px #c18aff;
+}
+
+.rsa-chip small {
+    font-size: 7px;
+    letter-spacing: 1px;
+    color: #c9a7ff;
+}
+
+/* ===== CÓDIGO E ENGRENAGEM ===== */
+
+.code-showcase {
+    position: relative;
+    margin-top: 24px;
+    max-width: 520px;
+    min-height: 165px;
+    overflow: hidden;
+    border: 1px solid rgba(164, 110, 255, .45);
+    border-radius: 13px;
+    background: linear-gradient(145deg, #17142e, #0c0c20);
+    box-shadow:
+        0 0 12px rgba(145, 91, 255, .16),
+        inset 0 0 15px rgba(145, 91, 255, .06);
+}
+
+.code-top {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 13px;
+    border-bottom: 1px solid rgba(164, 110, 255, .22);
+    background: rgba(255,255,255,.025);
+}
+
+.code-dots {
+    display: flex;
+    gap: 5px;
+}
+
+.code-dots i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #a66aff;
+    box-shadow: 0 0 6px #a66aff;
+}
+
+.code-top span {
+    font-size: 10px;
+    color: #bcb0d4;
+}
+
+.code-top b {
+    margin-left: auto;
+    font-size: 9px;
+    color: #c18aff;
+}
+
+.code-content {
+    padding: 13px 16px;
+    font: 11px/1.9 'JetBrains Mono', monospace;
+    position: relative;
+    z-index: 2;
+}
+
+.code-purple {
+    color: #bd8aff;
+    margin-right: 12px;
+}
+
+.code-blue {
+    color: #8bcfff;
+}
+
+.code-muted {
+    color: #817995;
+}
+
+.code-gear {
+    position: absolute;
+    right: 22px;
+    bottom: 8px;
+    font-size: 78px;
+    line-height: 1;
+    color: #b77aff;
+    opacity: .75;
+    text-shadow:
+        0 0 5px #a45aff,
+        0 0 15px rgba(164, 90, 255, .75),
+        0 0 28px rgba(164, 90, 255, .4);
+    pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+    .rsa-flow {
+        width: 340px;
+        gap: 9px;
+    }
+
+    .rsa-chip {
+        width: 72px;
+        height: 72px;
+    }
+
+    .flow-node svg {
+        width: 47px;
+        height: 47px;
+    }
+}
+
+@media (max-width: 760px) {
+    .hero {
+        height: auto;
+        min-height: 230px;
+        flex-wrap: wrap;
+        padding: 20px 0;
+    }
+
+    .rsa-flow {
+        width: 100%;
+        max-width: 440px;
+        margin: 10px auto 0;
+    }
+}
+
+/* ===== AJUSTE DE ALTURA — TELA SOBRE O RSA ===== */
+
+/* Reduz um pouco o cabeçalho superior */
+header {
+    height: 58px;
+}
+
+/* Diminui a altura da área do título */
+.hero {
+    height: 125px;
+}
+
+/* Compacta o cartão principal */
+.main-card {
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+/* Reduz os espaços da explicação */
+.about {
+    padding: 16px;
+}
+
+.about h3 {
+    margin: 7px 0;
+}
+
+.about p {
+    line-height: 1.5;
+}
+
+/* Aproxima as fórmulas da explicação */
+.formulas {
+    margin-top: 12px;
+    gap: 10px;
+}
+
+.formulas div {
+    padding: 10px 13px;
+}
+
+/* Reduz o espaço antes do editor de código */
+.code-showcase {
+    margin-top: 14px;
+    min-height: 145px;
+}
+
+/* Compacta as linhas do código */
+.code-content {
+    padding: 9px 16px;
+    line-height: 1.7;
+}
+
+/* Engrenagem um pouco mais discreta */
+.code-gear {
+    font-size: 68px;
+    opacity: .65;
+}
+
+/* ===== PAINEL DE CHAVES RECOLHIDO NA HORIZONTAL ===== */
+
+.keys.collapsed {
+    width: 100%;
+    min-height: 58px;
+    height: 58px;
+}
+
+.keys.collapsed .keys-head {
+    min-height: 58px;
+    height: 58px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 16px;
+    gap: 12px;
+    border-bottom: none;
+}
+
+.keys.collapsed .keys-head b {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.keys.collapsed .keys-head b span {
+    display: inline;
+}
+
+.keys.collapsed .keys-head button {
+    transform: rotate(180deg);
+}
+
+.keys.collapsed .keys-body {
+    display: none;
+}
+
+/* Organização dos três parâmetros RSA */
+.key-inputs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+}
+
+.key-inputs label {
+    min-width: 0;
+}
+
+/* Texto explicativo */
+#chaves .hint {
+    margin-top: 18px;
+    text-align: center;
+    line-height: 1.6;
+    font-size: 13.5px;
+}
+
+/* Botão centralizado */
+.generate-action {
+    display: flex;
+    justify-content: center;
+    margin: 28px 0;
+}
+
+/* Resultado */
+#chaves .result {
+    max-width: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsividade */
+@media (max-width: 760px) {
+    .key-inputs {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .generate-action .primary {
+        width: 100%;
+    }
+}
+
+
+

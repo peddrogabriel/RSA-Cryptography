@@ -1,0 +1,27 @@
+# Executable files
+*.exe
+*.out
+
+# Generated RSA files
+chave_publica.txt
+mensagem_criptografada.txt
+mensagem_descriptografada.txt
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+
+# Temporary files
+*.tmp
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
